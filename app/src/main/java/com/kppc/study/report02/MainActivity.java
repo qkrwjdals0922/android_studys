@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox checked_student;
     Button action_student;
     String school, name, major, grade;
+    TextView result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "입력하세요", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getBaseContext(), "에러가 발생했습니다. 엔지니어에게 요청하세요", Toast.LENGTH_SHORT).show();
                 }else {
-
+                    result.setText(school+"\n"+major+"\n"+grade+"\n"+name);
                 }
 
 
@@ -102,5 +104,6 @@ public class MainActivity extends AppCompatActivity {
         layout01 = findViewById(R.id.layout01);
         checked_grade = findViewById(R.id.grade_group);
         action_student = findViewById(R.id.btn);
+        result = findViewById(R.id.result);
     }
 }
