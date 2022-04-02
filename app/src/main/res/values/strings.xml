@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">report06</string>
+    <string name="hint01">평점 계산기</string>
+    <string name="hint02">점수</string>
+    <string name="hint03">점수 입력</string>
+    <string name="hint04">평점 평가방법 선택</string>
+    <string name="hint05">(수, 우, 미, 양, 가)</string>
+    <string name="hint06">(A, B, C, D, E, F)</string>
+    <string name="hint07">(A°, A⁺,....,F)</string>
+    <string name="hint08">점수:</string>
+    <string name="hint09">평점:</string>
+</resources>
