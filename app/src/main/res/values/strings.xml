@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">seekbar02</string>
+    <string name="hint01">0(00)</string>
+</resources>
