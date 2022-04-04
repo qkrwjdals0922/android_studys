@@ -36,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        get_blue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+        get_green.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                blue = progress;
-                str_blue.setText(String.format("%d(%h)", green, green));
+                green = progress;
+                str_green.setText(String.format("%d(%h)", blue, blue));
                 changeColorText(red, green, blue);
             }
 
@@ -55,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        get_green.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        get_blue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                green = progress;
-                str_green.setText(String.format("%d(%h)", blue, blue));
+                blue = progress;
+                str_blue.setText(String.format("%d(%h)", green, green));
                 changeColorText(red, green, blue);
             }
 
