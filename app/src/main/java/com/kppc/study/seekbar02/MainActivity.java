@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 red = progress;
-                str_red.setText(String.format("%d(%h)", red, red));
+                str_red.setText(String.format("%d(%H)", red, red));
                 changeColorText(red, green, blue);
             }
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 green = progress;
-                str_green.setText(String.format("%d(%h)", green, green));
+                str_green.setText(String.format("%d(%H)", green, green));
                 changeColorText(red, green, blue);
             }
 
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 blue = progress;
-                str_blue.setText(String.format("%d(%h)", blue, blue));
+                str_blue.setText(String.format("%d(%H)", blue, blue));
                 changeColorText(red, green, blue);
             }
 
