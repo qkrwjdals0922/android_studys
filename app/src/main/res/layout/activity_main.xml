@@ -51,6 +51,10 @@
         android:text="@string/hint01" />
 
     <TextView
+        android:text="000000"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:gravity="center"
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
