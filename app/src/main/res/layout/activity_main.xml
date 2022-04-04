@@ -21,9 +21,9 @@
 
         <SeekBar
             android:id="@+id/seek_cm"
-            android:max="920"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:max="920" />
     </LinearLayout>
 
     <LinearLayout
@@ -32,56 +32,63 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="몸무게" />
 
         <ImageButton
-            android:layout_marginStart="80dp"
             android:id="@+id/plus_btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="80dp"
             android:background="@drawable/icon2" />
 
         <ImageButton
-            android:layout_marginStart="100dp"
             android:id="@+id/minus_btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="100dp"
             android:background="@drawable/icon1" />
+
         <SeekBar
-            android:visibility="gone"
             android:id="@+id/seek_kg"
-            android:max="600"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:max="600"
+            android:visibility="gone" />
     </LinearLayout>
+
     <Button
         android:id="@+id/bmi_btn"
-        android:text="BMI"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="BMI" />
 
     <TextView
-        android:layout_gravity="center"
         android:id="@+id/cm_str"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="신장(키): " />
+
+    <TextView
         android:id="@+id/kg_str"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="몸무게: " />
+
+    <TextView
         android:id="@+id/bmi_str"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
     <TextView
-        android:layout_gravity="center"
         android:id="@+id/result_str"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </LinearLayout>
