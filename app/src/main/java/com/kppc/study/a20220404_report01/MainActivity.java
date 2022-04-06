@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         seek_kg.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                data_kg = (progress * 0.5f) * 0.5f;
+                data_kg = 0.5f + (progress * 0.5f);
                 str_kg.setText(String.format("%.1f cm",data_kg));
                 bmi_calculator(data_cm / 100, data_kg);
             }
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         seek_cm.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                data_cm = (progress * 0.5f) * 0.5f;
+                data_cm = 0.5f + (progress * 0.5f) ;
                 str_cm.setText(String.format("%.1f cm",data_cm));
                 bmi_calculator(data_cm / 100 , data_kg);
 
