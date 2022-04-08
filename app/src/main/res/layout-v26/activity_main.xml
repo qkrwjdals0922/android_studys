@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:max="400"
-
+            android:min="0"
             android:progress="200"/>
 
     </LinearLayout>
@@ -54,9 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:max="200"
-            android:min="0"
-            android:progress="100"/>
+            android:max="400"
+            android:progress="200"/>
 
     </LinearLayout>
 
@@ -108,6 +107,7 @@
 
     <TextView
         android:id="@+id/str_result"
+        android:text="섭씨온도: 0.0ºC, 화씨온도: 0.0ºF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

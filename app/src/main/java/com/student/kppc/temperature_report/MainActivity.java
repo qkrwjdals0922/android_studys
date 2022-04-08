@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     TextView str_result, num_cel, num_fah;
     float float_cel = 0.0f, float_fah = 0.0f;
     float result_cel = 0.0f, result_fah= 0.0f;
+    boolean init = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         seek_celsius.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                float_cel = (i * 0.5f) * 0.5f;
+                float_cel = ((i * 0.5f) - 100.0f);
+                init = float_cel == 0.00f;
                 num_cel.setText(String.format("(%.2f)ºC", float_cel));
             }
 
@@ -45,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         seek_fahrenheit.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                float_fah = (i * 0.5f) * 0.5f;
+                float_fah = ((i * 0.5f) - 100.0f);
+                init = float_fah == 0.00f;
                 num_fah.setText(String.format("(%.2f)ºC", float_fah));
             }
 
@@ -59,44 +63,48 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        group_trans.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.btn_cel_fah:
+                        result_fah = (float) ((float_cel * 1.8) + 32);
+                        result_cel = float_cel;
+                        break;
+                    case R.id.btn_fah_cel:
+                        result_cel = (float) ((float_fah - 32) / 1.8);
+                        result_fah = float_fah;
+                        break;
+                }
+            }
+        });
+
         btn_trans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                group_trans.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i){
-                            case R.id.btn_cel_fah:
-                                result_fah = (float) ((float_cel * 1.8) + 32);
-                                result_cel = float_cel;
-                                break;
-                            case R.id.btn_fah_cel:
-                                result_cel = (float) ((float_fah - 32) / 1.8);
-                                result_fah = float_fah;
-                                break;
-                        }
-                    }
-                });
-                str_result.setText(String.format("섭씨온도: %.2f ºC, 화씨온도: %.2f ºF", result_cel, result_fah));
+                if (!init){
+                    str_result.setText(String.format("섭씨온도: %.2f ºC, 화씨온도: %.2f ºF", result_cel, result_fah));
+                } else {
+                    Toast.makeText(MainActivity.this, "값을 지정해주세요", Toast.LENGTH_SHORT).show();
+                    str_result.setText("");
+                }
             }
         });
+
         btn_init.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float_cel = 0.0f;
-                float_fah = 0.0f;
-                result_cel = 0.0f;
-                result_fah = 0.0f;
-                seek_celsius.setProgress(0);
-                seek_fahrenheit.setProgress(0);
+                init = true;
+                seek_celsius.setProgress(200);
+                seek_fahrenheit.setProgress(200);
                 cel_fah.setChecked(false);
                 fah_cel.setChecked(false);
-
+                float_cel = 0.0f;
+                result_cel = 0.0f;
+                float_fah = 0.0f;
+                result_fah = 0.0f;
             }
         });
-    }
-    private void seek_System(SeekBar celsius, SeekBar fahrenheit) {
-
     }
 
 
@@ -111,5 +119,7 @@ public class MainActivity extends AppCompatActivity {
         num_cel = findViewById(R.id. num_cel);
         num_fah = findViewById(R.id. num_fah);
         str_result = findViewById(R.id.str_result);
+
+
     }
 }
