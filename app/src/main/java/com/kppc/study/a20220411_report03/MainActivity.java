@@ -51,15 +51,43 @@ public class MainActivity extends AppCompatActivity {
                 spinner_dialog.show();
                 break;
             case "horizontal":
+//              재 시작시 progress 값을 0으로 초기화한다.
+                progress_value = 0;
                 horizontal_dialog = new ProgressDialog(MainActivity.this);
                 horizontal_dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 horizontal_dialog.setMessage("잠시만 기다려주세요");
                 horizontal_dialog.setMax(100);
-                horizontal_dialog.show();
+                horizontal_dialog.setButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                while (progress_value < 100) {
-                    progress_value++;
+                    }
+                });
+                horizontal_dialog.show();
+//              앱 시작시, Thread 를 시작해서 Progressbar 를 증가시키기
+//              Thread 내부에서 화면에 작업을 하려면 handler 를 사용해야한다.
+                Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() { // THread로 작업할 내용을 구현
+                    while (progress_value < 100) {
+                        progress_value ++;
+
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() { // 화면에 변경하는 작업을 구현
+                                horizontal_dialog.setProgress(progress_value);
+                            }
+                        });
+                        try {
+                            Thread.sleep(300);
+                        } catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                    }
                 }
+            });
+                thread.start();
+
                 break;
             case "custom":
                 Toast.makeText(this, "c_click", Toast.LENGTH_SHORT).show();
