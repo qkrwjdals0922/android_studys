@@ -50,4 +50,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "BACK BUTTON을 눌렀다.", Toast.LENGTH_SHORT).show();
+//        super.onBackPressed();
+    }
 }
