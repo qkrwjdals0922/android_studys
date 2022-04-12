@@ -3,11 +3,14 @@ package com.kppc.study.a20220411_report03;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,24 +19,20 @@ public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();
     int progress_value = 0;
 
+    EditText input_id, input_pwd;
+    Button btn_login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    public void spinner_onclick(View view) {
-        dialog_ex("spinner");
-    }
+    public void spinner_onclick(View view) {dialog_ex("spinner");}
 
-    public void horizontal_onclick(View view) {
-        dialog_ex("horizontal");
+    public void horizontal_onclick(View view) {dialog_ex("horizontal");}
 
-    }
-
-    public void custom_onclick(View view) {
-
-    }
+    public void custom_onclick(View view) {dialog_ex("custom");}
 
     public void dialog_ex(String type) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -91,7 +90,25 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "custom":
                 Toast.makeText(this, "c_click", Toast.LENGTH_SHORT).show();
+                Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.coustom_dialog_layout);
+                dialog.show();
+                EditText get_id = dialog.findViewById(R.id.get_input_id);
+                EditText get_pwd = dialog.findViewById(R.id.get_input_pwd);
 
+                dialog.findViewById(R.id.login_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String str_id = get_id.getText().toString();
+                        String str_pwd = get_pwd.getText().toString();
+                        if (!(str_id.equals("") || str_pwd.equals(""))){
+                            Toast.makeText(MainActivity.this, str_id + "/" + str_pwd, Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }else {
+                            Toast.makeText(MainActivity.this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 break;
         }
     }
