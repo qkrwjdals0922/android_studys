@@ -67,4 +67,10 @@
         android:layout_height="wrap_content"
         android:text="LOGIN" />
 
+    <Button
+        android:id="@+id/cancel_button"
+        android:text="취소"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

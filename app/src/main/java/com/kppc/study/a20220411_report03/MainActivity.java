@@ -109,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+                dialog.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
                 break;
         }
     }
