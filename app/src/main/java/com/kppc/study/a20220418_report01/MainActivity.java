@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //  EditText 입력 버튼
     private void input_data() {
         input_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //  EditText 삭제 버튼
     private void edit_reset() {
         delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,15 +104,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //  결과 버튼
     private void view_result() {
+        final int[] checked_value = {};
         result_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //listview 의 테마인 simple_list_item_multiple_choice 의 체크박스에서 체크상태를 받아오기위해 SparseBooleanArray 를 사용한다.
                 SparseBooleanArray booleanArray = listView.getCheckedItemPositions();
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < arrayList.size(); i++) {
-                    if(booleanArray.get(i)) {
-                        sb.append(arrayList.get(i));
+                    if (booleanArray.get(i)) {
+                        //StringBuilder 의 append 를 이용하여 booleanArray 에서 받아온 checkedState 를문자열로 변환함과 동시에 하나의 문자열로 이어준다.
+                        sb.append(arrayList.get(i) + "\n");
                     }
                 }
                 Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
@@ -125,7 +131,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
                         Log.d("report01::dialog", "remove");
-                        arrayList.remove(sb.toString());
+                        //listview 의 테마인 simple_list_item_multiple_choice 의 체크박스에서 체크상태를 받아오기위해 SparseBooleanArray 를 사용한다.
+                        SparseBooleanArray booleanArray = listView.getCheckedItemPositions();
+                        int count = adapter.getCount();
+                        for (int i = count - 1; i >= 0; i--) {
+                            if (booleanArray.get(i)) {
+                                arrayList.remove(i);
+                            }
+                        }
+                        // 모든 선택 상태 초기화
+                        listView.clearChoices();
                         adapter.notifyDataSetChanged();
                     }
                 });
@@ -136,18 +151,26 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //  전체선택
     private void checked_all() {
-
+        for (int i = 0; i < arrayList.size(); i++) {
+            listView.setItemChecked(i, true);
+        }
     }
 
+    //  전체해제
     private void unchecked_all() {
-
+        for (int i = 0; i < arrayList.size(); i++) {
+            listView.setItemChecked(i, false);
+        }
     }
 
+    //  앱 종료
     private void exit() {
-
+        finish();
     }
 
+    //  id값 불러오는 함수
     private void get_id() {
         input_btn = findViewById(R.id.input);
         delete_btn = findViewById(R.id.delete);
