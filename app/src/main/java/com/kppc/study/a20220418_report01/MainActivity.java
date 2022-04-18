@@ -1,0 +1,159 @@
+package com.kppc.study.a20220418_report01;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.util.Log;
+import android.util.SparseArray;
+import android.util.SparseBooleanArray;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    Button input_btn, delete_btn, result_btn;
+    EditText get_str;
+    TextView empty_str;
+    ListView listView;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> arrayList;
+    String data_str;
+
+    int list_value = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        get_id();
+
+        listView.setEmptyView(empty_str);
+        arrayList = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, arrayList);
+        listView.setAdapter(adapter);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+//      입력버튼 클릭
+        input_data();
+//      삭제버튼 클릭
+        edit_reset();
+//      결과 출력 버튼 클릭
+        view_result();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.checked_all:
+                checked_all();
+                break;
+            case R.id.unchecked_all:
+                unchecked_all();
+                break;
+            case R.id.exit:
+                exit();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void input_data() {
+        input_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data_str = get_str.getText().toString();
+                if (!data_str.equals("")) {
+                    arrayList.add(data_str);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+    }
+
+    private void edit_reset() {
+        delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                get_str.setText("");
+            }
+        });
+    }
+
+    private void view_result() {
+        result_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SparseBooleanArray booleanArray = listView.getCheckedItemPositions();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if(booleanArray.get(i)) {
+                        sb.append(arrayList.get(i));
+                    }
+                }
+                Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("선택한 회원 목록").setMessage(sb.toString()).setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int j) {
+                        Log.d("report01::dialog", "click");
+                    }
+                }).setNegativeButton("삭제", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int j) {
+                        Log.d("report01::dialog", "remove");
+                        arrayList.remove(sb.toString());
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
+        });
+    }
+
+    private void checked_all() {
+
+    }
+
+    private void unchecked_all() {
+
+    }
+
+    private void exit() {
+
+    }
+
+    private void get_id() {
+        input_btn = findViewById(R.id.input);
+        delete_btn = findViewById(R.id.delete);
+        result_btn = findViewById(R.id.result_btn);
+        get_str = findViewById(R.id.get_name);
+        empty_str = findViewById(android.R.id.empty);
+        listView = findViewById(android.R.id.list);
+    }
+}
