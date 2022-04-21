@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">20220419_report02</string>
+    <string name="menu_hint01">배열 사용</string>
+    <string name="menu_hint02">arrays.xml 사용</string>
+    <string name="menu_hint03">list사용</string>
+    <string name="menu_hint04">createFromResource사용</string>
+</resources>
