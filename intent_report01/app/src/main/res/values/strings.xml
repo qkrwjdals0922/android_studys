@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">20220502_report01</string>
+    <string name="hint01">정수 입력</string>
+    <string name="hint_sum">더하기</string>
+    <string name="minus_hint">빼기</string>
+    <string name="multi_hint">곱하기</string>
+    <string name="division_hint">나누기</string>
+</resources>
