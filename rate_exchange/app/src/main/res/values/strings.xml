@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">report04</string>
+    <string name="bmi_hint">BMI 계산기</string>
+    <string name="kg_hint">몸무게 (KG)</string>
+    <string name="kg_hint02">Kg 단위로 입력</string>
+    <string name="cm_hint">몸무게 (CM)</string>
+    <string name="cm_hint02">cm 단위로 입력</string>
+    <string name="btn_hint">계산하기</string>
+</resources>

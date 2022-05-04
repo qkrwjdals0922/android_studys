@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4CAF50"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/bmi_hint"
+        android:textColor="@color/white"
+        android:textSize="50sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/kg_hint"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/input_kg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="@string/kg_hint02"
+        android:textColor="@color/black"
+        android:inputType="numberDecimal"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/cm_hint"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/input_cm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="@string/cm_hint02"
+        android:textColor="@color/black"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_hint"/>
+
+    <TextView
+        android:id="@+id/result_value"
+        android:text="@string/app_name"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#ff0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
