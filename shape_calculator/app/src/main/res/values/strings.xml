@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">circl_area</string>
-    <string name="hint">원의 반지름을 입력받아 빤간부분의 면저글 구해보자</string>
-    <string name="todo">TODO</string>
-    <string name="hint2">원의 반지름:</string>
-    <string name="hint3">원의 반지름</string>
-    <string name="btn_str_calculation">계산하기</string>
-
-</resources>
