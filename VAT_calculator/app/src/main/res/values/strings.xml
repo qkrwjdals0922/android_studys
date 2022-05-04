@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">report05</string>
+    <string name="hint01">판매금액:</string>
+    <string name="drop_hint">버림</string>
+    <string name="un_up_hint">반올림</string>
+    <string name="up_hint">올림</string>
+    <string name="cou_hint">계산하기</string>
+    <string name="view_hint">가격:</string>
+</resources>
